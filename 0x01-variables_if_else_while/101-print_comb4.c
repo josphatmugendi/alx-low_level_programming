@@ -7,30 +7,30 @@
 
 int main(void)
 {
-		int m;
-		int n;
-		int k;
+	int m;
+	int n;
+	int k;
 
-		for (m = 0; m <= 9; m++)
+	for (m = 0; m <= 9; m++)
+	{
+		for (n = 0; n <= 9; n++)
 		{
-			for (n = 0; n <= 9; n++)
+			for (k = 0; k <= 9; k++)
 			{
-				for (k = 0; k <= 9; k++)
+				if (k > n && n > m)
 				{
-					if (k > n && n > m)
+					putchar(m + '0');
+					putchar(n + '0');
+					putchar(k + '0');
+					if (m != 7 || n != 8 || k != 9)
 					{
-						putchar(m + '0');
-						putchar(n + '0');
-						putchar(k + '0');
-						if (m != 7 || n != 8 || k != 9)
-						{
-							putchar(',');
-							putchar(' ');
-						}
+						putchar(',');
+						putchar(' ');
 					}
 				}
 			}
 		}
-		putchar('\n');
-		return (0);
+	}
+	putchar('\n');
+	return (0);
 }

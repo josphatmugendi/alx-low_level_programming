@@ -1,15 +1,16 @@
 #include <stdio.h>
+
 /**
  * main - entry point
- *
  * Return: alway returns 0
- *
  */
+
 int main(void)
 {
 		int m;
 		int n;
 		int k;
+
 		for (m = 0; m <= 9; m++)
 		{
 			for (n = 0; n <= 9; n++)

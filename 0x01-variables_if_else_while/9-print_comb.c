@@ -5,8 +5,8 @@
  * Return: alway returns 0
  */
 
-int main(void)
-{
+ int main(void)
+ {
 	int i;
 
 	for (i = 10; i < 20; i++)
@@ -20,4 +20,4 @@ int main(void)
 	}
 	putchar('\n');
 	return (0);
-}
+ }

@@ -22,9 +22,8 @@ int main(void)
 		if (counter < 50)
 		{
 			printf(", ");
-	        
 	        }
-	}	
+	}
 	printf("\n");
 	return (0);
 }

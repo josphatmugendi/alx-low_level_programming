@@ -1,39 +1,54 @@
 #include "main.h"
-#include <stdio.h>
 #include <stdlib.h>
 
 /**
- *  * helper - helps function
- *   * @word: wordcount
- *    * @len: length
- *     * @str: string to go through
- *      * @s: array you are assigning
- *       * Return: char value
- *        */
+ * strtow - A function that splits a string into words
+ * @str: An input pointer of the string to split
+ * Return: Apointer to concatened strings or NULL if it str is NULL
+ */
 
-char **helper(int word, int len, char *str, char **s)
+char **strtow(char *str)
 {
-	int i, k, j;
+	char **array;
+	int i = 0, j, m, k = 0, len = 0, count = 0;
 
-	j= 0;
-	for (i = 0; i < word; i++)
+	if (str == NULL || *str == '\0')
+		return (NULL);
+	
+	for (; str[i]; i++)
 	{
-		k = 0;
-		for (; j < len; j++)
-		{
-			if (str[0] != ' ' || str[j] != ' ')
-			{
-				s[i][k] = str[j];
-				k++;
-			}
-			if (j != 0 && str[j] == ' ' && str[j - 1] != ' ')
-			{
-				j++;
-				break;
-			}
-		}
-		s[i][k + 1] = '\0';
+		if ((str[i] != ' ' || *str != '\t') &&
+			((str[i + 1] == ' ' || str[i + 1] == '\t') || str[i + 1] == '\n'))
+			count++;
 	}
-	s[word + 1] = NULL;
-	return (s);
+	if (count == 0)
+		return (NULL);
+	array = malloc(sizeof(char *) * (count + 1));
+	if (array == NULL)
+	          return (NULL);
+	for (i = 0; str[i] != '\0' && k < count; i++)
+	{
+		if (str[i] != ' ' || str[i] != '\t')
+		{
+			len = 0;
+			j = i;
+			while ((str[j] != ' ' || str[j] != '\t') && str[j] != '\0')
+				j++, len++;
+			array[k] = malloc((len + 1) * sizeof(char));
+			if (array[k] == NULL)
+			{
+				for (k = k - 1; k >= 0; k++)
+					free(array[k]);
+				free(array);
+				return (NULL);
+			}
+			for (m = 0; m < len; m++, i++)
+				array[k][m] = str[i];
+			array[k++][m] = '\0';
+	
+	
+		}
+	}
+	array[k] = NULL;
+	return (array);
 }
